@@ -17,6 +17,7 @@ import { MedicoComponent } from './medico/medico.component';
 import { PacienteEdicionComponent } from './paciente/paciente-edicion/paciente-edicion.component';
 import { PacienteComponent } from './paciente/paciente.component';
 import { CommonModule } from '@angular/common';
+import { Not403Component } from './not403/not403.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { CommonModule } from '@angular/common';
     MedicoDialogoComponent,
     PacienteComponent,
     PacienteEdicionComponent,
-    LoginComponent
+    LoginComponent,
+    Not403Component
   ],
   providers: [],
 })

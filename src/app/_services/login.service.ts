@@ -23,4 +23,15 @@ export class LoginService {
         + environment.TOKEN_AUTH_PASSWORD))
       });
     }
+
+    estaLogueado() {
+      let token = sessionStorage.getItem(environment.TOKEN_NAME);
+      return token != null;
+    }
+
+    cerrarSesion() {
+      sessionStorage.clear();
+      this.route.navigate(['login']);
+    }
+
   }
