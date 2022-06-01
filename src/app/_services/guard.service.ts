@@ -53,7 +53,6 @@ export class GuardService implements CanActivate {
             return true;
           } else {
             this.router.navigate(['/not-403']);
-            //UWU
             return false;
           }
         }));
