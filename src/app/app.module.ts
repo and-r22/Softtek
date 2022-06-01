@@ -12,7 +12,8 @@ import { environment } from 'src/environments/environment';
 import { JwtModule } from '@auth0/angular-jwt';
 
 export function tokenGetter() {
-  return sessionStorage.getItem("access_token");
+  //return sessionStorage.getItem("access_token");
+  return sessionStorage.getItem(environment.TOKEN_NAME);
 }
 
 @NgModule({
