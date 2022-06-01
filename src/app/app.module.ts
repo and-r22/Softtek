@@ -3,14 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutComponent } from './pages/layout/layout.component';
+import { OrganizarMaterialModule } from './organizar-material/organizar-material.module';
+import { PagesModule } from './pages/pages.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    OrganizarMaterialModule,
+    FormsModule
+
+    // JwtModule.forRoot({
+    //   config: {
+    //     tokenGetter: tokenGetter,
+    //     allowedDomains: [environment.HOST.substring(7)],
+    //     disallowedRoutes: [`${environment.HOST}/login/enviarCo`]
+    //   }
+    // })
   ],
   providers: [],
   bootstrap: [AppComponent]
