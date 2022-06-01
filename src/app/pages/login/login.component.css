@@ -7,14 +7,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   min-height: 100vh;
-  background: #e2e2e2;
-}
-
-div {
-  height: 200px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
+  /* background: #e2e2e2; */
 }
 
 .app-header {
@@ -29,12 +22,27 @@ div {
 
 .login-wrapper {
   height: 100%;
-  background-color: #eeeeee;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .positronx {
   text-decoration: none;
-  color: #ffffff;
+  color: rgba(0, 0, 0, 0);
 }
 
 .box {
@@ -107,9 +115,16 @@ div {
   border: 1px solid currentColor;
   line-height: 54px;
   background: #FFF7FA;
+  width: 100%;
 }
 
 .login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
   padding: 0.8375em 0;
 }
 
+div {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

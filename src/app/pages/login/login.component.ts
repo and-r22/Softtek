@@ -32,11 +32,11 @@ export class LoginComponent implements OnInit {
     this.usuario = this.form.value['username'];
     this.password = this.form.value['password'];
 
-    console.log(`usuario:${this.usuario} contraseña:${this.password}`);
+    //console.log(`usuario:${this.usuario} contraseña:${this.password}`);
 
     this.loginService.login(this.usuario, this.password).subscribe(data => {
 
-      console.log(data);
+      //console.log(data);
 
       sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
       this.router.navigate(['/inicio']);

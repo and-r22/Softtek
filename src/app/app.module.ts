@@ -8,8 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { OrganizarMaterialModule } from './organizar-material/organizar-material.module';
-import { PagesModule } from './pages/pages.module';
-import { CommonModule } from '@angular/common';
+import { environment } from 'src/environments/environment';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return sessionStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -23,15 +27,15 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     HttpClientModule,
     OrganizarMaterialModule,
-    FormsModule
+    FormsModule,
 
-    // JwtModule.forRoot({
-    //   config: {
-    //     tokenGetter: tokenGetter,
-    //     allowedDomains: [environment.HOST.substring(7)],
-    //     disallowedRoutes: [`${environment.HOST}/login/enviarCo`]
-    //   }
-    // })
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.HOST.substring(7)],
+        disallowedRoutes: [`${environment.HOST}/login/enviarCo`]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
