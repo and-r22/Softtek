@@ -18,6 +18,8 @@ import { PacienteEdicionComponent } from './paciente/paciente-edicion/paciente-e
 import { PacienteComponent } from './paciente/paciente.component';
 import { CommonModule } from '@angular/common';
 import { Not403Component } from './not403/not403.component';
+import { ReporteComponent } from './reporte/reporte.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   imports: [
@@ -26,7 +28,8 @@ import { Not403Component } from './not403/not403.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    PdfViewerModule
   ],
   exports: [],
   declarations: [
@@ -40,7 +43,8 @@ import { Not403Component } from './not403/not403.component';
     PacienteComponent,
     PacienteEdicionComponent,
     LoginComponent,
-    Not403Component
+    Not403Component,
+    ReporteComponent
   ],
   providers: [],
 })
