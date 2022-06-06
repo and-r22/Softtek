@@ -11,6 +11,9 @@ import { ConsultaService } from 'src/app/_services/consulta.service';
 import { EspecialidadService } from 'src/app/_services/especialidad.service';
 import { MedicoService } from 'src/app/_services/medico.service';
 import { PacientesService } from 'src/app/_services/pacientes.service';
+import * as moment from 'moment';
+import { ConsultaListaExamenDTO } from 'src/app/_modulo/consultaListaExamenDTO';
+import { Consulta } from 'src/app/_modulo/consulta';
 
 @Component({
   selector: 'app-consulta',
@@ -92,6 +95,56 @@ export class ConsultaComponent implements OnInit {
 
   removerExamen(index: number) {
     this.examenesSelecccionados.splice(index, 1);
+  }
+
+  aceptar() {
+    let medico = new Medico();
+    medico.idMedico = this.idMedicoSeleccionado;
+    alert('paciente -> ' + this.idMedicoSeleccionado)
+    let paciente = new Paciente();
+    paciente.idPaciente = this.idPacienteSeleccionado;
+    alert('paciente -> ' + this.idPacienteSeleccionado)
+    let especialidad = new Especialidad();
+    especialidad.idEspecialidad = this.idEspecialidadSeleccionada;
+    let consulta = new Consulta();
+    consulta.medico = medico;
+    consulta.paciente = paciente;
+    consulta.especialidad = especialidad;
+    // Forma de usar fechas con JS
+    // let tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    // let localISOTime = (new Date(this.fechaSeleccionada.getTime() - tzoffset)).toISOString();
+    // consulta.fecha = localISOTime;
+
+    //Usando la librería moment.js
+    //Seguimos usando el formato ISO
+    consulta.fecha = moment(this.fechaSeleccionada).format('YYYY-MM-DDTHH:mm:ss');
+    consulta.numConsultorio = "C1";
+    consulta.detalleConsulta = this.detalleConsulta;
+    let dto = new ConsultaListaExamenDTO();
+    dto.consulta = consulta;
+    dto.lstExamen = this.examenesSelecccionados;
+    this.consultaService.registrarTransaccion(dto).subscribe(() => {
+      this.snackBar.open('Se registró la consulta', 'Aviso', { duration: 2000 });
+      setTimeout(() => {
+        this.limpiarControles();
+      }, 2000);
+    });
+  }
+
+  limpiarControles() {
+    this.detalleConsulta = [];
+    this.examenesSelecccionados = [];
+    this.diagnostico = null;
+    this.tratamiento = null;
+    this.idPacienteSeleccionado = 0;
+    this.idEspecialidadSeleccionada = 0;
+    this.idMedicoSeleccionado = 0;
+    this.examenSeleccionado = null;
+    this.fechaSeleccionada = new Date();
+    this.fechaSeleccionada.setHours(0);
+    this.fechaSeleccionada.setMinutes(0);
+    this.fechaSeleccionada.setSeconds(0);
+    this.fechaSeleccionada.setMilliseconds(0);
   }
 
 }
