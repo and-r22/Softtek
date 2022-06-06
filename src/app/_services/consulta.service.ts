@@ -20,4 +20,8 @@ export class ConsultaService {
   generarReporte() {
     return this.http.get(`${this.url}/generarReporte`, { responseType: 'blob' });
   }
+
+  registrarTransaccion() {
+
+  }
 }

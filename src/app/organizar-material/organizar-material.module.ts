@@ -13,6 +13,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { CustomDateAdapter } from './custom-adapter';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -31,7 +38,16 @@ import { MatSortModule } from '@angular/material/sort';
     MatToolbarModule,
     MatPaginatorModule,
     MatCardModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatExpansionModule,
+    MatListModule
+  ],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: DateAdapter, useClass: CustomDateAdapter }
   ]
 })
 export class OrganizarMaterialModule { }

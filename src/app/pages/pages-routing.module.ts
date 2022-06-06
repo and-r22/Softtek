@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { GuardService } from '../_services/guard.service';
 import { AnaliticaDialogoComponent } from './analitica/analitica-dialogo/analitica-dialogo.component';
 import { AnaliticaComponent } from './analitica/analitica.component';
+import { ConsultaComponent } from './consulta/consulta.component';
 import { EspecialidadEdicionComponent } from './especialidad/especialidad-edicion/especialidad-edicion.component';
 import { EspecialidadComponent } from './especialidad/especialidad.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -44,6 +45,8 @@ export const routes: Routes = [
   { path: 'inicio', component: InicioComponent, canActivate: [GuardService] },
   { path: 'not-403', component: Not403Component},
   { path: 'reporte', component: ReporteComponent, canActivate: [GuardService] },
+  { path: 'consulta', component: ConsultaComponent, canActivate: [GuardService] },
+
 ];
 
 @NgModule({

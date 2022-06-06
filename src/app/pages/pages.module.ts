@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { Not403Component } from './not403/not403.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ConsultaComponent } from './consulta/consulta.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     PacienteEdicionComponent,
     LoginComponent,
     Not403Component,
-    ReporteComponent
+    ReporteComponent,
+    ConsultaComponent
   ],
   providers: [],
 })
