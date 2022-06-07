@@ -68,14 +68,14 @@ export class PacienteEdicionComponent implements OnInit {
     if (this.edicion) {
       this.pacienteService.modificar(paciente).subscribe(() => {
         this.pacienteService.listar().subscribe(data => {
-          this.pacienteService.pacienteCambio.next(data);
+          this.pacienteService.setPacienteCambio(data);
           // this.pacienteService.setMensajeCambio("Se modifico");
         })
       })
     }else{
       this.pacienteService.registrar(paciente).subscribe(() => {
         this.pacienteService.listar().subscribe(data => {
-          this.pacienteService.pacienteCambio.next(data);
+          this.pacienteService.setPacienteCambio(data);
           // this.pacienteService.setMensajeCambio("Se creo");
         })
       })
@@ -84,7 +84,7 @@ export class PacienteEdicionComponent implements OnInit {
     //   this.pacienteService.registrar(paciente).pipe(switchMap() =>{
 
     //   })
-    this.router.navigate(['paciente']);
+    this.router.navigate(['pages/paciente']);
   }
 }
 

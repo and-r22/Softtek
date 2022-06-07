@@ -14,10 +14,10 @@
               <mat-icon>account_box</mat-icon>
               <span>Mi Perfil</span>
           </button>
-          <button mat-menu-item (click)="sidenav.opened = false">
-              <mat-icon>exit_to_app</mat-icon>
-              <span>Cerrar Sesión</span>
-          </button>
+          <button mat-menu-item (click)="sidenav.opened = false" (click)="cerrarSesion()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Cerrar Sesión</span>
+        </button>
       </mat-menu>
   </mat-toolbar>
   <mat-sidenav-container class="example-sidenav-container">

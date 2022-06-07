@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Menu } from 'src/app/_modulo/menu';
+import { LoginService } from 'src/app/_services/login.service';
 import { MenuService } from 'src/app/_services/menu.service';
 import { environment } from 'src/environments/environment';
 
@@ -15,7 +16,9 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private menuService: MenuService,
-    private router: Router) { }
+    private router: Router,
+    private ls:LoginService
+    ) { }
 
   ngOnInit(): void {
 
@@ -26,6 +29,9 @@ export class LayoutComponent implements OnInit {
 
   navegar(url: string) {
     this.router.navigate([url]);
+  }
+  cerrarSesion(){
+    this.ls.cerrarSesion();
   }
 
 }

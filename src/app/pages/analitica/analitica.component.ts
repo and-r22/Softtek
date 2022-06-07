@@ -29,7 +29,7 @@ export class AnaliticaComponent implements OnInit {
     this.analiticaService.listar().subscribe(data => {
       this.origen = new MatTableDataSource(data);
 
-      this.analiticaService.getAnaliticaCambio().subscribe(data => {
+      this.analiticaService.getCambio().subscribe(data => {
         this.origen = new MatTableDataSource(data);
         this.origen.sort = this.sort;
         this.origen.paginator = this.paginator;
@@ -48,7 +48,7 @@ export class AnaliticaComponent implements OnInit {
   eliminar(id:number){
     this.analiticaService.eliminar(id).subscribe(()=>{
       this.analiticaService.listar().subscribe(data=>{
-        this.analiticaService.setAnaliticaCambio(data);
+        this.analiticaService.setCambio(data);
         this.analiticaService.setMensajeCambio("ELIMINADO");
       })
     })

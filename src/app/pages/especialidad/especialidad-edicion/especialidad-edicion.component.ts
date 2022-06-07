@@ -56,14 +56,14 @@ export class EspecialidadEdicionComponent implements OnInit {
     if (this.edicion) {
       this.especialidadService.modificar(especialidad).subscribe(() => {
         this.especialidadService.listar().subscribe(data => {
-          this.especialidadService.especialidadCambio.next(data);
+          this.especialidadService.setEspecialidadCambio(data);
           // this.pacienteService.setMensajeCambio("Se modifico");
         })
       })
     }else{
       this.especialidadService.registrar(especialidad).subscribe(() => {
         this.especialidadService.listar().subscribe(data => {
-          this.especialidadService.especialidadCambio.next(data);
+          this.especialidadService.setEspecialidadCambio(data);
           // this.pacienteService.setMensajeCambio("Se creo");
         })
       })

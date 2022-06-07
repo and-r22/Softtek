@@ -39,7 +39,7 @@ export class AnaliticaDialogoComponent implements OnInit {
     if (this.modificar) {
       this.analiticaService.modificar(this.analitica).subscribe(() => {
         this.analiticaService.listar().subscribe(analitica => {
-          this.analiticaService.analiticaCambio.next(analitica);
+          this.analiticaService.setCambio(analitica);
           this.analiticaService.setMensajeCambio("Se ha modificado");
         });
         this.analiticaService.getMensajeCambio().subscribe(data =>{
@@ -51,7 +51,7 @@ export class AnaliticaDialogoComponent implements OnInit {
         return this.analiticaService.listar();
       }))
         .subscribe(analitica => {
-          this.analiticaService.analiticaCambio.next(analitica);
+          this.analiticaService.setCambio(analitica);
           this.analiticaService.setMensajeCambio("Se ha registrado");
         })
         this.analiticaService.getMensajeCambio().subscribe(data =>{

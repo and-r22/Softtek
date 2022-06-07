@@ -8,31 +8,30 @@ import { GenericService } from './generic.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AnaliticaService extends GenericService<Analitica> {
+export class AnaliticaService  extends GenericService<Analitica>{
 
-  analiticaCambio = new Subject<Analitica[]>();
-  private mensajeCambio = new Subject<string>();
+  private cambio= new Subject<Analitica[]>();
+  private mensajeCambio= new Subject<string>();
 
-  constructor(protected override http: HttpClient) {
+  constructor(protected override http:HttpClient) { 
     super(
-      http, `${environment.HOST}/analiticas`
+      http,`${environment.HOST}/examen`
     );
   }
 
-  getAnaliticaCambio(){
-    return this.analiticaCambio.asObservable();
+  getCambio(){
+    return this.cambio.asObservable();
   }
 
-  setAnaliticaCambio(analitica: Analitica[]){
-    return this.analiticaCambio.next(analitica);
+  setCambio(analiticas:Analitica[]){
+    this.cambio.next(analiticas);
   }
 
   getMensajeCambio(){
     return this.mensajeCambio.asObservable();
   }
 
-  setMensajeCambio(mensajeCambio:string){
-    this.mensajeCambio.next(mensajeCambio);
+  setMensajeCambio(mensaje:string){
+    this.mensajeCambio.next(mensaje);
   }
-
 }

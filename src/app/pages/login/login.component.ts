@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       //console.log(data);
 
       sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
-      this.router.navigate(['/inicio']);
+      this.router.navigate(['pages/inicio']);
     })
   }
 }

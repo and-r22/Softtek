@@ -18,7 +18,7 @@ export class EspecialidadComponent implements OnInit {
   constructor(private especialidadService: EspecialidadService) { }
 
   ngOnInit(): void {
-    // this.pacienteService.getMensajeCambio().subscribe(data =>{
+    // this.especialidadService.getMensajeCambio().subscribe(data =>{
     //   this.snackBar.open(data, 'AVISO', {duration : 2000});
     // })
 
@@ -34,9 +34,12 @@ export class EspecialidadComponent implements OnInit {
   }
 
   eliminar(id:number){
-    // this.pacienteService.eliminar(id).subscribe(() => {
-    //   this.id = id;
-    // });
+    this.especialidadService.eliminar(id).subscribe(()=>{
+      this.especialidadService.listar().subscribe(data=>{
+        this.especialidadService.setEspecialidadCambio(data);
+        this.especialidadService.setMensajeCambio("ELIMINADO");
+      })
+    })
   }
 
 }
