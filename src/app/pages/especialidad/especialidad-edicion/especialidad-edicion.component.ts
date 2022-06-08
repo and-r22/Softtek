@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Especialidad } from 'src/app/_modulo/especialidad';
 import { EspecialidadService } from 'src/app/_services/especialidad.service';
@@ -15,10 +16,13 @@ export class EspecialidadEdicionComponent implements OnInit {
   id: number;
   edicion: boolean;
 
+
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private especialidadService: EspecialidadService
+    private especialidadService: EspecialidadService,
+    private snackBar:MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -57,22 +61,25 @@ export class EspecialidadEdicionComponent implements OnInit {
       this.especialidadService.modificar(especialidad).subscribe(() => {
         this.especialidadService.listar().subscribe(data => {
           this.especialidadService.setEspecialidadCambio(data);
-          // this.pacienteService.setMensajeCambio("Se modifico");
+          this.especialidadService.setMensajeCambio("Se modifico");
         })
+      })
+      this.especialidadService.getMensajeCambio().subscribe(mensaje=>{
+        this.snackBar.open(mensaje,"cerrar",{duration:2000})
       })
     }else{
       this.especialidadService.registrar(especialidad).subscribe(() => {
         this.especialidadService.listar().subscribe(data => {
           this.especialidadService.setEspecialidadCambio(data);
-          // this.pacienteService.setMensajeCambio("Se creo");
+          this.especialidadService.setMensajeCambio("Se creo");
         })
       })
+      this.especialidadService.getMensajeCambio().subscribe(mensaje=>{
+        this.snackBar.open(mensaje,"cerrar",{duration:2000})
+      })
     }
-    // else{
-    //   this.pacienteService.registrar(paciente).pipe(switchMap() =>{
-
-    //   })
-    this.router.navigate(['especialidad']);
+ 
+    this.router.navigate(['pages/especialidad']);
   }
 }
 

@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Analitica } from 'src/app/_modulo/analitica';
@@ -12,7 +13,7 @@ import { AnaliticaDialogoComponent } from './analitica-dialogo/analitica-dialogo
   templateUrl: './analitica.component.html',
   styleUrls: ['./analitica.component.css']
 })
-export class AnaliticaComponent implements OnInit {
+export class AnaliticaComponent implements OnInit, AfterViewInit {
 
   firstLastButtons = true;
   id: number;
@@ -22,7 +23,9 @@ export class AnaliticaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private analiticaService: AnaliticaService, public dialog: MatDialog) { }
+  constructor(private analiticaService: AnaliticaService, 
+    public dialog: MatDialog,
+    private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -36,7 +39,19 @@ export class AnaliticaComponent implements OnInit {
       })
     })
   }
+  ngAfterViewInit() {
+    this.origen.paginator = this.paginator;
+    this.origen.sort = this.sort;
+  }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.origen.filter = filterValue.trim().toLowerCase();
+
+    if (this.origen.paginator) {
+      this.origen.paginator.firstPage();
+    }
+  }
   openDialog(analitica?: Analitica): void {
 
     const dialogo1 = this.dialog.open(AnaliticaDialogoComponent, {
@@ -51,6 +66,9 @@ export class AnaliticaComponent implements OnInit {
         this.analiticaService.setCambio(data);
         this.analiticaService.setMensajeCambio("ELIMINADO");
       })
+    })
+    this.analiticaService.getMensajeCambio().subscribe(mensaje=>{
+      this.snackBar.open(mensaje,"cerrar",{duration:2000})
     })
   }
 

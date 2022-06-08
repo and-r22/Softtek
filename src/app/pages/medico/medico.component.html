@@ -1,15 +1,9 @@
-<style>
-    .mat-form-field {
-        font-size: 14px;
-        width: 100%;
-    }
 
-    table {
-        width: 100%;
-    }
-</style>
 <router-outlet></router-outlet>
-
+<mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
 <table mat-table [dataSource]="origen" matSort class="mat-elevation-z8">
 
     <ng-container matColumnDef="idMedico">
@@ -50,7 +44,7 @@
 
 </table>
 
-<mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,25,100]" [showFirstLastButtons]="firstLastButtons"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="origen.data.length" aria-label="Seleccionar páginas"></mat-paginator>
 <button mat-fab color="accent" style="float: right" (click)="openDialog()">
     <mat-icon>add</mat-icon>
 </button>

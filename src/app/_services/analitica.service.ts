@@ -15,7 +15,7 @@ export class AnaliticaService  extends GenericService<Analitica>{
 
   constructor(protected override http:HttpClient) { 
     super(
-      http,`${environment.HOST}/examen`
+      http,`${environment.HOST}/analiticas`
     );
   }
 

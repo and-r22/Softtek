@@ -18,7 +18,7 @@ export class PacientesService extends GenericService<Paciente>{
 
   constructor(protected override http:HttpClient) { 
     super(
-      http,`${environment.HOST}/paciente`
+      http,`${environment.HOST}/pacientes`
     );
   }
 
