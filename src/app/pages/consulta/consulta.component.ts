@@ -100,10 +100,10 @@ export class ConsultaComponent implements OnInit {
   aceptar() {
     let medico = new Medico();
     medico.idMedico = this.idMedicoSeleccionado;
-    alert('paciente -> ' + this.idMedicoSeleccionado)
+   
     let paciente = new Paciente();
     paciente.idPaciente = this.idPacienteSeleccionado;
-    alert('paciente -> ' + this.idPacienteSeleccionado)
+
     let especialidad = new Especialidad();
     especialidad.idEspecialidad = this.idEspecialidadSeleccionada;
     let consulta = new Consulta();

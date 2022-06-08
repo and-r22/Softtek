@@ -21,6 +21,7 @@ import { Not403Component } from './not403/not403.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ConsultaComponent } from './consulta/consulta.component';
+import { Not404Component } from './not404/not404.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { ConsultaComponent } from './consulta/consulta.component';
     LoginComponent,
     Not403Component,
     ReporteComponent,
-    ConsultaComponent
+    ConsultaComponent,
+    Not404Component
   ],
   providers: [],
 })
