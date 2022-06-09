@@ -11,14 +11,12 @@ import { environment } from 'src/environments/environment';
 export class InicioComponent implements OnInit {
 
   usuario: string;
-  
+
   constructor(
     private menuService: MenuService
   ) { }
 
   ngOnInit(): void {
-
-
     const helper = new JwtHelperService();
 
     let token = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -28,6 +26,8 @@ export class InicioComponent implements OnInit {
     this.menuService.listarPorUsuario(this.usuario).subscribe(data => {
       this.menuService.setMenuCambio(data);
     });
+
+    this.usuario = tokenDecodificado.user_name;
   }
 
 }
