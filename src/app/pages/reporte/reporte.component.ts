@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ConsultaService } from 'src/app/_services/consulta.service';
 import { Chart} from 'chart.js';
+import { MatDialog } from '@angular/material/dialog';
+import { ReportepdfComponent } from './reportepdf/reportepdf.component';
 
 @Component({
   selector: 'app-reporte',
@@ -13,7 +15,7 @@ export class ReporteComponent implements OnInit {
   tipo: string = 'bar';
   pdfSrc: any;
 
-  constructor(private consultaService: ConsultaService) { }
+  constructor(private consultaService: ConsultaService, public dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.dibujar();
@@ -95,6 +97,16 @@ export class ReporteComponent implements OnInit {
       a.download = 'archivo.pdf';
       a.click();
     });
+  }
+
+  openDialog(): void {
+
+    const dialogref = this.dialog.open(ReportepdfComponent, {
+
+      width: '850px', //tamaño del dialogo
+
+    });
+
   }
 
 }

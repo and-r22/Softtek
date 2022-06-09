@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { Usuario } from 'src/app/_modulo/usuario';
-import { RegistroService } from 'src/app/_services/registro.service';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
+import { Usuario } from "src/app/_modulo/usuario";
+import { RegistroService } from "src/app/_services/registro.service";
+
 
 @Component({
   selector: 'app-registro',
@@ -12,7 +13,7 @@ import { RegistroService } from 'src/app/_services/registro.service';
 })
 export class RegistroComponent implements OnInit {
   form:FormGroup;
-usuario:Usuario
+  usuario:Usuario
   correo: string
   password: string
   hide = true
