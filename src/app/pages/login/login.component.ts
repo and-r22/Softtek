@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   form:FormGroup
   usuario: string
   password: string
-
+  hide = true
   constructor(
     private router: Router,
     private loginService: LoginService
