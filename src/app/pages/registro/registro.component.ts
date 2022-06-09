@@ -46,4 +46,8 @@ export class RegistroComponent implements OnInit {
     this.router.navigate(['login'])
   }
 
+  volver() {
+    this.router.navigate(['login'])
+  }
+
 }
